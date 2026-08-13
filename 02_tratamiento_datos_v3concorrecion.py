@@ -65,5 +65,5 @@ preprocesador = PipelineProcesamiento()
 df_limpio = preprocesador.fit_transform(df_entrenamiento)
 
 # EXTRAER EL ARCHIVO AUTOMÁTICAMENTE
-df.to_csv(r'C:\Users\maico\OneDrive\Desktop\ANALISIS DE DATOS CODES\machinlearning\dataset_1_limpiov3.csv', index=False, encoding='utf-8-sig')
+df_limpio.to_csv(r'C:\Users\maico\OneDrive\Desktop\ANALISIS DE DATOS CODES\machinlearning\dataset_1_limpiov3.csv', index=False, encoding='utf-8-sig')
 print("✅ ¡Procesamiento y extracción completada con éxito!")
