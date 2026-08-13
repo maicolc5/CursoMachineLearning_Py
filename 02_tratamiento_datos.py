@@ -67,7 +67,7 @@ df = pd.read_csv(r'C:\Users\maico\OneDrive\Desktop\ANALISIS DE DATOS CODES\machi
 
 df = preprocess_data(df)    
 
-print(df.head())
-print(df.shape)
-print(df.info())
-print(df.describe())
+# EXTRAER EL ARCHIVO AUTOMÁTICAMENTE
+df.to_csv(r'C:\Users\maico\OneDrive\Desktop\ANALISIS DE DATOS CODES\machinlearning\dataset_1_limpio.csv', index=False, encoding='utf-8-sig')
+print("✅ ¡Procesamiento y extracción completada con éxito!")
+
