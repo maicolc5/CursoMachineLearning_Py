@@ -11,7 +11,7 @@ class PipelineProcesamiento(BaseEstimator, TransformerMixin):
         
         # 🧠 AQUÍ SE GUARDARÁN LOS PROMEDIOS APRENDIDOS EN EL FIT
         self.medias_ = {}
-        self.stds_ = {}
+        self.stds_ = {} 
 
     def fit(self, X, y=None):
         # 1. El FIT "aprende" y calcula los promedios reales del dataset original limpio

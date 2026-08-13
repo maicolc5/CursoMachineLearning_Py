@@ -20,4 +20,4 @@ data = {
 df_random = pd.DataFrame(data)
 df_random.index.name = 'id'
 df_random.to_csv('dataset_1_random.csv')
-print("✅ Archivo 'dataset_1_random.csv' generado con éxito para pruebas.")
+print("✅ Archivo 'dataset_1_random.csv' generado con éxito para pruebas.")     
