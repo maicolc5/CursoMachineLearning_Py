@@ -69,7 +69,6 @@ class PipelineProcesamiento(BaseEstimator, TransformerMixin):
         df['Edad'] = df['Edad'].round(0).astype('Int64')
         df['Ingresos'] = df['Ingresos'].round(0).astype('float64')
         df['Hijos'] = df['Hijos'].round(0).astype('Int64')
-        df["Altura"] = df["Altura"].round(0).astype('float64')
             
         return df
 
