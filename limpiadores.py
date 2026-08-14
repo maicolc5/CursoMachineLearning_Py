@@ -14,18 +14,29 @@ class PipelineProcesamiento(BaseEstimator, TransformerMixin):
         self.stds_ = {}
 
     def fit(self, X, y=None):
-        # 1. El FIT "aprende" y calcula los promedios reales del dataset original limpio
         X_temp = X.copy()
         columnas_num = ["Edad", "Ingresos", "Hijos", "Altura"]
         
         for col in columnas_num:
-            # Quitamos los negativos temporalmente para calcular la media y std reales de entrenamiento
+            # Paso 1: Quitar los negativos temporalmente
             clean_series = X_temp[col].mask(X_temp[col] < 0)
-            self.medias_[col] = clean_series.mean()
-            self.stds_[col] = clean_series.std()
             
-        return self # Siempre debe retornar self
-
+            # Paso 2: Calcular un Z-Score temporal para detectar outliers
+            mean_inicial = clean_series.mean()
+            std_inicial = clean_series.std()
+            
+            if std_inicial > 0:
+                z_scores_temp = (clean_series - mean_inicial) / std_inicial
+                # Filtramos: dejamos solo lo que NO sea outlier (entre -2 y 2)
+                sin_outliers = clean_series.mask((z_scores_temp > 2) | (z_scores_temp < -2))
+            else:
+                sin_outliers = clean_series
+                
+            # Paso 3: ¡AQUÍ SÍ! Guardamos la media y std DEFINITIVAS, 100% limpias
+            self.medias_[col] = sin_outliers.mean()
+            self.stds_[col] = sin_outliers.std()
+            
+        return self
     def transform(self, X):
         # 2. El TRANSFORM aplica las reglas usando los promedios que ya aprendió el FIT
         df = X.copy()
