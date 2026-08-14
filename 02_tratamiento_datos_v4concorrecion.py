@@ -64,6 +64,14 @@ class PipelineProcesamiento(BaseEstimator, TransformerMixin):
         # Rellenar Nulos Numéricos usando las MEDIAS EXACTAS guardadas en el FIT
         for col in ["Edad", "Ingresos", "Hijos", "Altura"]:
             df[col] = df[col].fillna(self.medias_[col])
+
+
+        # 🔥 NUEVO: AJUSTE DE TIPOS INTEGRADO ANTES DE RETORNAR El DF
+        df['Edad'] = df['Edad'].round(0).astype('Int64')
+        df['Ingresos'] = df['Ingresos'].round(0).astype('float64')
+        df['Hijos'] = df['Hijos'].round(0).astype('Int64')
+        df["Altura"] = df["Altura"].round(0).astype('float64')
+            
             
         return df
 
