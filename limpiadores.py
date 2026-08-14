@@ -66,6 +66,13 @@ class PipelineProcesamiento(BaseEstimator, TransformerMixin):
             
         return df
 
+    def ajustear_tipos(self, df):
+    
+      df['Edad'] = df['Edad'].round(0).astype('int64')
+      df['Ingresos'] = df['Ingresos'].round(0).astype('float64')
+      df['Hijos'] = df['Hijos'].round(0).astype('int64')
+      df["Altura"] = df["Altura"].round(0).astype('float64')
+
 # --- CÓMO SE EJECUTA AHORA ---
 df_entrenamiento = pd.read_csv('dataset_1.csv', index_col=0)
 

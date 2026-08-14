@@ -67,6 +67,8 @@ class PipelineProcesamiento(BaseEstimator, TransformerMixin):
             
         return df
 
+    
+
 # --- CÓMO SE EJECUTA AHORA ---
 df_entrenamiento = pd.read_csv('dataset_1.csv', index_col=0)
 
